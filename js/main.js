@@ -1,30 +1,15 @@
-function getRandomNumbers (numberOne, numberTwo) {
-  if ((numberOne || numberTwo) < 0) {
-    return 'Выберите число больше нуля';
-  } else {
+// Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
 
-    if (numberTwo <= numberOne) {
-      return 'Второе число должно быть больше первого';
-    } else {
+function getRandomPositiveInteger (a, b) {
 
-      if ((typeof numberOne || typeof numberTwo) !== 'number') {
-        return 'Вы ввели НЕ число';
+  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
+  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
 
-      } else {
-        const result = Math.round(Math.random() * (numberTwo - numberOne) + numberOne);
-        // Источник: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-        return result;
-      }
-    }
-  }
-}
-getRandomNumbers (1, 3);
+  const result = Math.random() * (upper - lower + 1) + lower;
 
-function checkCommentString (commentString, maxLength) {
-  if (commentString.length < maxLength) {
-    return true;
-  }
-  return false;
+  return Math.floor(result);
 }
 
-checkCommentString ('Здесь находится комментарий к фотографии', 140);
+function checkStringLength (string, length) {
+  return string.length <= length;
+}
